@@ -15,6 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoController {
     
+    PersonRepository personRepository;
+
+    public DemoController(PersonRepository personRepository){
+        this.personRepository = personRepository;
+    }
+
+
     @GetMapping("/demo")
     public String demo(){
         return "Hello there";
@@ -22,18 +29,20 @@ public class DemoController {
 
     @GetMapping("/persons")
     public List<Person> getPerson(){
-        return List.of(new Person(0,"Martin", 45, "Kalmar"),
-        new Person(1,"Kalle", 30, "Lund"));
+        return List.of(new Person("Martin", 45, "Kalmar"),
+        new Person("Kalle", 30, "Lund"));
     }
 
     @GetMapping("/persons/{id}")
     public Person getOnePerson(@PathVariable int id){
-        return new Person(id, "Kalle", 45, "Kalmar");
+        return new Person("Kalle", 45, "Kalmar");
     }
 
     @PostMapping("/persons")
     public String addPerson(@RequestBody Person person){
-        return person.toString();
+        //Validate person
+        personRepository.save(person);
+        return "Person saved";
     }
 
   /*   @GetMapping("/sorting")
