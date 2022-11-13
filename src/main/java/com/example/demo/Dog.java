@@ -14,9 +14,6 @@ public class Dog {
     Long id;
     String name;
 
-    @ManyToOne
-    Person person;
-
     public Dog() {
     }
 

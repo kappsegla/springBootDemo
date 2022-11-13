@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 
@@ -28,7 +29,7 @@ public class Person {
     @Column(name="hometown", length = 120)
     String homeTown;
     String country;
-    @OneToMany
+    @ManyToMany
     Set<Dog> dogs;
 
 
