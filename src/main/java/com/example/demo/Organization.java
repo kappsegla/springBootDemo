@@ -39,6 +39,14 @@ public class Organization {
         this.members = members;
     }
 
-    
+    public void addMember(Member m) {
+        this.members.add(m);
+        m.getOrganization().add(this);
+    }
+ 
+    public void removeMember(Member m) {
+        this.members.remove(m);
+        m.getOrganization().remove(this);
+    }   
     
 }

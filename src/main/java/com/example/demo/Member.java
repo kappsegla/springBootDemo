@@ -6,9 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Member {
@@ -16,8 +14,8 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @ManyToMany
-    // private Set<Organization> organization;
+    @ManyToMany(mappedBy = "members")
+    private Set<Organization> organization;
 
     public Long getId() {
         return id;
@@ -27,12 +25,12 @@ public class Member {
         this.id = id;
     }
 
-    // public Set<Organization> getOrganization() {
-    //     return organization;
-    // }
+    public Set<Organization> getOrganization() {
+        return organization;
+    }
 
-    // public void setOrganization(Set<Organization> organization) {
-    //     this.organization = organization;
-    // }
+    public void setOrganization(Set<Organization> organization) {
+        this.organization = organization;
+    }
 
 }
