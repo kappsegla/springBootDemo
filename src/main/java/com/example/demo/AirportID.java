@@ -2,21 +2,17 @@ package com.example.demo;
 
 import java.io.Serializable;
 
-import jakarta.persistence.Embeddable;
+public class AirportID implements Serializable {
 
-@Embeddable
-public class AirportID implements Serializable{
     private String countryCode;
-     
+
     private String cityCode;
 
-    
-    
+    // getters & setters equals, hashCode
+
     public String getCountryCode() {
         return countryCode;
     }
-
-
 
     public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
@@ -60,5 +56,5 @@ public class AirportID implements Serializable{
             return false;
         return true;
     }
-    
+
 }
