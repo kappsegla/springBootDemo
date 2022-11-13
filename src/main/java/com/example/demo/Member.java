@@ -14,7 +14,7 @@ public class Member {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "fk_orgid")
+    @JoinColumn(name = "fk_organization")
     private Organization organization;
 
     public Long getId() {
@@ -33,6 +33,4 @@ public class Member {
         this.organization = organization;
     }
 
-
-    
 }
