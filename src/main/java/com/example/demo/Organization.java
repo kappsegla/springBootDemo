@@ -1,8 +1,6 @@
 package com.example.demo;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -10,8 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class Organization {
@@ -20,6 +18,9 @@ public class Organization {
     private Long id;
 
     @ManyToMany
+    @JoinTable(name = "organization_member",
+           joinColumns = { @JoinColumn(name = "fk_organization") },
+           inverseJoinColumns = { @JoinColumn(name = "fk_member")})
     private Set<Member> members = new HashSet<>();
 
     public Long getId() {
