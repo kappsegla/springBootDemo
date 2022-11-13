@@ -4,18 +4,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Dog {
-
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String name;
+    private Long id;
 
-    public Dog() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "fk_orgid")
+    private Organization organization;
 
     public Long getId() {
         return id;
@@ -25,15 +25,14 @@ public class Dog {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Organization getOrganization() {
+        return organization;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
+
 
     
-
-
 }
