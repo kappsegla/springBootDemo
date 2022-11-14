@@ -17,6 +17,8 @@ public class Organization {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
     @OneToMany
     @JoinColumn(name="organization_id")
     private List<Member> members = new ArrayList<>();
@@ -35,6 +37,14 @@ public class Organization {
 
     public void setMembers(List<Member> members) {
         this.members = members;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
     
 }
