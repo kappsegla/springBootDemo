@@ -24,8 +24,9 @@ public class OrganizationController {
         Member m2 = new Member();
         m2.setName("Kalle");
         memberRepository.save(m2);
-        organization.getMembers().add(m1);
-        organization.getMembers().add(m2);
+
+        organization.addMember(m1);
+        organization.addMember(m2);
 
         return orgrepo.save(organization);
     }

@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,8 +17,9 @@ public class Member {
 
     private String name;
 
-    // @ManyToOne
-    // private Organization organization;
+    @ManyToOne
+    @JsonIgnore
+    private Organization organization;
 
     public Long getId() {
         return id;
@@ -34,13 +37,13 @@ public class Member {
         this.name = name;
     }
 
-    // public Organization getOrganization() {
-    //     return organization;
-    // }
+    public Organization getOrganization() {
+        return organization;
+    }
 
-    // public void setOrganization(Organization organization) {
-    //     this.organization = organization;
-    // }
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
     
     
 }

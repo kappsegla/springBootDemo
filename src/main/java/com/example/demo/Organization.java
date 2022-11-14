@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -19,8 +18,7 @@ public class Organization {
 
     private String name;
 
-    @OneToMany
-    @JoinColumn(name="organization_id")
+    @OneToMany(mappedBy = "organization")
     private List<Member> members = new ArrayList<>();
 
     public Long getId() {
@@ -46,5 +44,11 @@ public class Organization {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void addMember(Member m){
+        m.setOrganization(this);
+        this.members.add(m);
+    }
+
     
 }
