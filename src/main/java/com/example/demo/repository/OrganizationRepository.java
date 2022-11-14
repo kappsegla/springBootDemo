@@ -10,7 +10,7 @@ public interface OrganizationRepository extends CrudRepository<Organization, Lon
     
     List<Organization> findByName(String name);
 
-    // List<Organization> findOrganizationByMembersName(String name);
+    List<Organization> findOrganizationByMembersName(String name);
 
     
 }

@@ -1,9 +1,11 @@
 package com.example.demo.controller;
 
+import java.util.List;
 import java.util.Set;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +23,11 @@ public class OrganizationController {
     public OrganizationController(OrganizationRepository orgrepo, MemberRepository memberRepository) {
         this.orgrepo = orgrepo;
         this.memberRepository = memberRepository;
+    }
+
+    @GetMapping("/orgs/{name}")
+    public List<Organization> getAllOrganizationsByName(@PathVariable String name){
+        return orgrepo.findOrganizationByMembersName(name);
     }
 
 

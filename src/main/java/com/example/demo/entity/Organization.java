@@ -19,7 +19,7 @@ public class Organization {
 
     private String name;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Member> members = new HashSet<>();
 
     public Long getId() {
