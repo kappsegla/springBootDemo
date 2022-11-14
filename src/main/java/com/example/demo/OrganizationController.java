@@ -18,6 +18,7 @@ public class OrganizationController {
     public Organization addOrganization(){
         Organization organization = new Organization();
         organization.setName("Gulfuddens AIK");
+
         Member m1 = new Member();
         m1.setName("Martin");
         memberRepository.save(m1);
@@ -25,8 +26,8 @@ public class OrganizationController {
         m2.setName("Kalle");
         memberRepository.save(m2);
 
-        organization.addMember(m1);
-        organization.addMember(m2);
+        organization.getMembers().add(m1);
+        organization.getMembers().add(m2);
 
         return orgrepo.save(organization);
     }

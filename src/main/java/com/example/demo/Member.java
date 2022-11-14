@@ -17,9 +17,9 @@ public class Member {
 
     private String name;
 
-    @ManyToOne
-    @JsonIgnore
-    private Organization organization;
+    // @ManyToOne
+    // @JsonIgnore
+    // private Organization organization;
 
     public Long getId() {
         return id;
@@ -37,13 +37,13 @@ public class Member {
         this.name = name;
     }
 
-    public Organization getOrganization() {
-        return organization;
-    }
+    // public Organization getOrganization() {
+    //     return organization;
+    // }
 
-    public void setOrganization(Organization organization) {
-        this.organization = organization;
-    }
-    
+    // public void setOrganization(Organization organization) {
+    //     this.organization = organization;
+    // }
+   
     
 }

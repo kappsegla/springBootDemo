@@ -1,13 +1,13 @@
 package com.example.demo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Organization {
@@ -18,8 +18,8 @@ public class Organization {
 
     private String name;
 
-    @OneToMany(mappedBy = "organization")
-    private List<Member> members = new ArrayList<>();
+    @ManyToMany
+    private Set<Member> members = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -27,14 +27,6 @@ public class Organization {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<Member> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<Member> members) {
-        this.members = members;
     }
 
     public String getName() {
@@ -45,10 +37,12 @@ public class Organization {
         this.name = name;
     }
 
-    public void addMember(Member m){
-        m.setOrganization(this);
-        this.members.add(m);
+    public Set<Member> getMembers() {
+        return members;
     }
 
-    
+    public void setMembers(Set<Member> members) {
+        this.members = members;
+    }
+
 }
