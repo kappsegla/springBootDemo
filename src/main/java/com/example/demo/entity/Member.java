@@ -1,25 +1,22 @@
-package com.example.demo;
-
-import java.util.HashSet;
-import java.util.Set;
+package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 
 @Entity
-public class Organization {
-    
+public class Member {
+        
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @ManyToMany
-    private Set<Member> members = new HashSet<>();
+    // @ManyToOne
+    // @JsonIgnore
+    // private Organization organization;
 
     public Long getId() {
         return id;
@@ -37,12 +34,13 @@ public class Organization {
         this.name = name;
     }
 
-    public Set<Member> getMembers() {
-        return members;
-    }
+    // public Organization getOrganization() {
+    //     return organization;
+    // }
 
-    public void setMembers(Set<Member> members) {
-        this.members = members;
-    }
-
+    // public void setOrganization(Organization organization) {
+    //     this.organization = organization;
+    // }
+   
+    
 }

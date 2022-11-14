@@ -1,25 +1,26 @@
-package com.example.demo;
+package com.example.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.HashSet;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 
 @Entity
-public class Member {
-        
+public class Organization {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    // @ManyToOne
-    // @JsonIgnore
-    // private Organization organization;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    private Set<Member> members = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -37,13 +38,12 @@ public class Member {
         this.name = name;
     }
 
-    // public Organization getOrganization() {
-    //     return organization;
-    // }
+    public Set<Member> getMembers() {
+        return members;
+    }
 
-    // public void setOrganization(Organization organization) {
-    //     this.organization = organization;
-    // }
-   
-    
+    public void setMembers(Set<Member> members) {
+        this.members = members;
+    }
+
 }
