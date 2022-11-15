@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.example.demo.entity.Member;
+import com.example.demo.repository.MemberRepository;
 import com.example.demo.repository.OrganizationRepository;
 
 @SpringBootApplication
@@ -15,8 +17,11 @@ public class DemoApplication {
 	}
 
 	@Bean
-	CommandLineRunner init(OrganizationRepository repo) {
+	CommandLineRunner init(MemberRepository repo) {
 		return args -> {
+			// var m = new Member();
+			// m.setName("Kalle");
+			// repo.save(m);
 			//Put database code here to insert or update entities into repo
 		};
 	}

@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,18 +33,16 @@ public class OrganizationController {
         this.memberRepository = memberRepository;
     }
 
-    // @GetMapping("/orgs")
-    // public List<Proj> getAllOrganizationNames(){
-    //     return orgrepo.findAllByNameAndId("Test", 1L);
-    // }
-
     @GetMapping("/orgs")
-    @Transactional
-    public void getAllOrganizationNames(){
-        orgrepo.addPrefixToName("#");
+    public List<Proj> getAllOrganizationNames(){
+        return orgrepo.findAllByName("Twitter");
     }
 
-
+    // @GetMapping("/orgs")
+    // @Transactional
+    // public void getAllOrganizationNames(){
+    //     orgrepo.addPrefixToName("#");
+    // }
 
     @GetMapping("/orgs/{name}")     
     public List<Organization> getAllOrganizationsByName(@PathVariable String name){
