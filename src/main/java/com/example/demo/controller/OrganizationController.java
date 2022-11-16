@@ -35,7 +35,7 @@ public class OrganizationController {
 
     @GetMapping("/orgs")
     public List<Proj> getAllOrganizationNames(){
-        return orgrepo.findAllByName("Twitter");
+        return orgrepo.findBy();
     }
 
     // @GetMapping("/orgs")

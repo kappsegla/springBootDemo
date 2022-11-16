@@ -9,16 +9,17 @@ import org.springframework.data.repository.query.Param;
 
 import com.example.demo.entity.Organization;
 
-import jakarta.transaction.Transactional;
+public interface OrganizationRepository extends CrudRepository<Organization, Long> {
 
-public interface OrganizationRepository extends CrudRepository<Organization, Long>{
-    
     // @Query("""
-    //         SELECT o FROM Organization o  WHERE o.name = :name
-    //         """)
+    // SELECT o FROM Organization o WHERE o.name = :name
+    // """)
     // List<Organization> findByName(@Param("name") String name);
-    
-    List<Proj> findAllByName(String name);
+
+    @Query("""
+            SELECT new com.example.demo.repository.Proj(o.name as name) FROM Organization o
+            """)
+    List<Proj> findBy();
 
     List<Organization> findByName(String name);
 
