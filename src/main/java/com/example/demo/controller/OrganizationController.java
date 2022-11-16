@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +17,6 @@ import com.example.demo.repository.MemberRepository;
 import com.example.demo.repository.OrganizationRepository;
 import com.example.demo.repository.Proj;
 
-import jakarta.transaction.Transactional;
-
 @RestController
 public class OrganizationController {
 
@@ -34,6 +29,7 @@ public class OrganizationController {
     }
 
     @GetMapping("/orgs")
+    @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Resource was not found on the server")
     public List<Proj> getAllOrganizationNames(){
         return orgrepo.findBy();
     }
