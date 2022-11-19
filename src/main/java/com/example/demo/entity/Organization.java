@@ -37,7 +37,7 @@ public class Organization {
 // ManyToMany: LAZY
 // OneToOne: EAGER
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private Set<Member> members = new HashSet<>();
 
     public Long getId() {
