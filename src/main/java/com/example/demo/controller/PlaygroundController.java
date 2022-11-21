@@ -29,7 +29,7 @@ public class PlaygroundController {
 
     @PostMapping("/playgrounds")
     public ResponseEntity<Playground> insertOne(@RequestBody Playground playground) {
-        playground.setCoordinate(point(WGS84,g(4.33,3.21)));
+        //playground.setCoordinate(point(WGS84,g(4.33,3.21)));
         var newPlayground = playgroundRepository.save(playground);
         
         URI location = ServletUriComponentsBuilder
@@ -55,7 +55,7 @@ public class PlaygroundController {
                 g(0.0, 10.0),
                 g(0.0, 0.0)));
 
-        return playgroundRepository.filterOnCircle(area);
+        return playgroundRepository.filterOnArea(area);
     }
 
     @GetMapping(path = "/geo")

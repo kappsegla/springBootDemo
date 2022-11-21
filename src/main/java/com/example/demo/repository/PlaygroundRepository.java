@@ -15,6 +15,6 @@ public interface PlaygroundRepository extends ListCrudRepository<Playground, Lon
     @Query("""
             SELECT p FROM Playground p WHERE WITHIN(p.coordinate, :geoarea) = true
             """)
-    List<Playground> filterOnCircle(@Param("geoarea") Geometry<G2D> geoArea);
+    List<Playground> filterOnArea(@Param("geoarea") Geometry<G2D> geoArea);
 
 }

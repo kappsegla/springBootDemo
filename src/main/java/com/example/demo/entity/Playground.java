@@ -14,9 +14,9 @@ public class Playground {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+   
     private Point<G2D> coordinate;
-
+    
     public Long getId() {
         return id;
     }
