@@ -48,6 +48,7 @@ public class PlaygroundController {
 
     @GetMapping(path = "/playgrounds", params = "filter")
     public List<Playground> filterPoints(@RequestParam String filter) {
+
         Geometry<G2D> area = polygon(WGS84, ring(
                 g(0.0, 0.0),
                 g(10.0, 0.0),
