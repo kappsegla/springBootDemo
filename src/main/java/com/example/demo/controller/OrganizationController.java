@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.net.URI;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Hibernate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,8 @@ import com.example.demo.repository.MemberRepository;
 import com.example.demo.repository.OrganizationRepository;
 import com.example.demo.service.AgeService;
 
+import jakarta.transaction.Transactional;
+
 @RestController
 public class OrganizationController {
 
@@ -27,7 +30,8 @@ public class OrganizationController {
     MemberRepository memberRepository;
     AgeService ageService;
 
-    public OrganizationController(AgeService ageService, OrganizationRepository orgrepo, MemberRepository memberRepository) {
+    public OrganizationController(AgeService ageService, OrganizationRepository orgrepo,
+            MemberRepository memberRepository) {
         this.ageService = ageService;
         this.orgrepo = orgrepo;
         this.memberRepository = memberRepository;
@@ -36,18 +40,18 @@ public class OrganizationController {
     @GetMapping("/orgs/{id}")
     // @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Resource was not found
     // on the server")
+    @Transactional
     public ResponseEntity<Organization> getOne(@PathVariable("id") Long id) {
         var org = orgrepo.findById(id);
-        logger.info("After loading Org from database");        
-        if (org.isPresent())
+        logger.info("After loading organization from database, do we have everything?");
+        if (org.isPresent()) {
+            Hibernate.initialize(org.get().getMembers());
             return ResponseEntity.ok().body(org.get());
-
+        }
+        return ResponseEntity.notFound().build();
         // throw new ResponseStatusException(HttpStatus.NOT_FOUND, "HTTP Status will be
         // NOT FOUND (CODE 404)\n");
-        // return ResponseEntity.notFound().build();
-
-        throw new CustomException("Stay in Bed Day, 20th of Nov");
-
+        // throw new CustomException("Stay in Bed Day, 20th of Nov");
     }
 
     @GetMapping("/age")
@@ -107,5 +111,12 @@ public class OrganizationController {
     // // return orgrepo.findByName("Gulfuddens AIK");
     // // return orgrepo.findOrganizationByMembersName("Martin");
     // }
+
+    // @Query("select members from Organization o inner join o.members members where c = :organization")
+    // public Page<Member> findByOrganization(@Param("conversation") Organization organization, Pageable pageable);
+    // var org = orgrepo.findById(id);
+    // Pageable pageable = new PageRequest(0, 20, Sort.Direction.DESC, "id");
+    // Page<Member> members = repo.findByOrganization(organization, pageable);
+    // List<Member> last20MessageList = members.getContent();
 
 }

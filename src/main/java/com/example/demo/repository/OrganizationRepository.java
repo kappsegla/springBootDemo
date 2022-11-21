@@ -28,5 +28,5 @@ public interface OrganizationRepository extends CrudRepository<Organization, Lon
     @Query("UPDATE Organization SET name = :prefix || name")
     @Modifying
     void addPrefixToName(@Param("prefix") String prefix);
-
+    
 }

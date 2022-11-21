@@ -58,4 +58,16 @@ public class PlaygroundController {
         return playgroundRepository.filterOnCircle(area);
     }
 
+    @GetMapping(path = "/geo")
+    public Geometry<G2D> filterPoints() {
+        Geometry<G2D> area = polygon(WGS84, ring(
+                g(0.0, 0.0),
+                g(10.0, 0.0),
+                g(10.0, 10.0),
+                g(0.0, 10.0),
+                g(0.0, 0.0)));
+
+        return area;
+    }
+
 }
