@@ -19,18 +19,18 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         return http
-    //             .csrf().disable()
-    //             .cors().disable()
-    //             .formLogin().disable()
-    //             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-    //             .and()
-    //             .authorizeHttpRequests()
-    //             .requestMatchers(HttpMethod.GET, "/geo/**").permitAll()
-    //             .requestMatchers("/playgrounds/**").authenticated()
-    //             .anyRequest().denyAll()
-    //             .and()
-    //             .httpBasic()
-    //             .and()
+                .csrf().disable()
+                .cors().disable()
+                .formLogin().disable()
+                .logout().disable()
+                .sessionManagement().disable()
+                .authorizeHttpRequests()
+                .requestMatchers(HttpMethod.GET, "/orgs").authenticated()
+                .requestMatchers(HttpMethod.GET, "/orgs/**").permitAll()
+                .anyRequest().denyAll()
+                .and()
+                .httpBasic()
+                .and()
                 .build();
     }
 }

@@ -18,6 +18,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.example.demo.entity.Playground;
 import com.example.demo.repository.PlaygroundRepository;
 
+import jakarta.annotation.security.RolesAllowed;
+
 @RestController
 public class PlaygroundController {
 

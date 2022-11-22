@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import java.net.URI;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Hibernate;
@@ -77,6 +79,11 @@ public class OrganizationController {
                 .toUri();
 
         return ResponseEntity.created(location).body(myOrg);
+    }
+
+    @GetMapping("/orgs")
+    public Iterable<Organization> getAllOrganizationNames(){
+    return orgrepo.findAll();
     }
 
     // @GetMapping("/orgs")
