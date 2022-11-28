@@ -6,15 +6,24 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AgeService {
-    
-    public boolean isInFuture(int yearOfBirth){
 
+    private int currentYear;
+
+    public AgeService(int currentYear) {
+        this.currentYear = currentYear;
+    }
+
+    public AgeService() {
+        this.currentYear = LocalDate.now().getYear();
+    }
+
+    public boolean isInFuture(int yearOfBirth) {
         LocalDate date = LocalDate.now();
         return yearOfBirth > date.getYear();
     }
 
-    public int calculateAge(int yearOfBirth){
-        return LocalDate.now().getYear() -  yearOfBirth;
+    public int calculateAge(int yearOfBirth) {
+        return currentYear - yearOfBirth;
     }
 
 }

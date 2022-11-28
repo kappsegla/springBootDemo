@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.Hibernate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -83,7 +84,10 @@ public class OrganizationController {
 
     @GetMapping("/orgs")
     public Iterable<Organization> getAllOrganizationNames(){
-    return orgrepo.findAll();
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        logger.info("Request by user: "  + auth.getName());
+
+        return orgrepo.findAll();
     }
 
     // @GetMapping("/orgs")

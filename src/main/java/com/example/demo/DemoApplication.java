@@ -14,14 +14,14 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner init(MemberRepository repo) {
-		return args -> {
-			// var m = new Member();
-			// m.setName("Kalle");
-			// repo.save(m);
-			//Put database code here to insert or update entities into repo
-		};
-	}
+	// @Bean
+	// CommandLineRunner init(MemberRepository repo) {
+	// 	return args -> {
+	// 		// var m = new Member();
+	// 		// m.setName("Kalle");
+	// 		// repo.save(m);
+	// 		//Put database code here to insert or update entities into repo
+	// 	};
+	// }
 
 }
