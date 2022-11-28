@@ -23,6 +23,8 @@ public class AgeService {
     }
 
     public int calculateAge(int yearOfBirth) {
+        if( isInFuture(yearOfBirth))
+            throw new IllegalArgumentException();
         return currentYear - yearOfBirth;
     }
 
