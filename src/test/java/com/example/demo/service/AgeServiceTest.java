@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
+
 public class AgeServiceTest {
 
     @Test
@@ -26,7 +27,7 @@ public class AgeServiceTest {
     }
 
     @Test
-    void givenAYearInTheFutureShoudlReturnTrue() {
+    void givenAYearInTheFutureShouldReturnTrue() {
         AgeService ageService = new AgeService();
         int yearInFuture = LocalDate.now().getYear() + 1;
 

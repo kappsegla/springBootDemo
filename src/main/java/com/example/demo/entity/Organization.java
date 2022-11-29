@@ -18,7 +18,7 @@ import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Organization {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,18 +26,18 @@ public class Organization {
     private String name;
 
     @CreationTimestamp
-    @Column(name= "created", nullable = false, updatable = false)
+    @Column(name = "created", nullable = false, updatable = false)
     private LocalDateTime created;
 
     @UpdateTimestamp
     private LocalDateTime modified;
 
-// OneToMany: LAZY
-// ManyToOne: EAGER
-// ManyToMany: LAZY
-// OneToOne: EAGER
+    // OneToMany: LAZY
+    // ManyToOne: EAGER
+    // ManyToMany: LAZY
+    // OneToOne: EAGER
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
     private Set<Member> members = new HashSet<>();
 
     public Long getId() {
