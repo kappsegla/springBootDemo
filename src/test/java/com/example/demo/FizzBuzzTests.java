@@ -35,7 +35,8 @@ public class FizzBuzzTests {
     @ParameterizedTest(name = "For value {0} should return {1}")
     @CsvSource({
             "4,4",
-            "5,Buzz"
+            "5,Buzz",
+            "6,Fizz"
     })
     void shouldReturnFizzBuzz(String value, String expectedResult) {
         String result = FizzBuzz.fizzBuzz(value);
