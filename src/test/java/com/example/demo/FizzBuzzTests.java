@@ -14,4 +14,14 @@ public class FizzBuzzTests {
         assertThat(result).isEqualTo("0");
     }
 
+    @Test
+    void givenValueOneShouldReturnOne(){
+        
+        String result = FizzBuzz.fizzBuzz("1");
+
+        assertThat(result).isEqualTo("1");
+    }
+
+
+
 }
