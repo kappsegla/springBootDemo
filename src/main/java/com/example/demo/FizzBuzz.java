@@ -1,5 +1,10 @@
 package com.example.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.demo.entity.Person;
+
 public class FizzBuzz {
 
     public static String fizzBuzz(String value) {
@@ -15,6 +20,16 @@ public class FizzBuzz {
         if( tal % 5 == 0)
             return "Buzz";            
         return value;
+    }
+
+    private List<Person> persons = new ArrayList<>();
+
+    public void add(Person person) {
+        persons.add(person);
+    }
+
+    public List<Person> getPersons() {
+        return persons;
     }
 
 }

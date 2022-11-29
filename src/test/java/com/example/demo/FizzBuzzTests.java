@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import com.example.demo.entity.Person;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class FizzBuzzTests {
@@ -47,4 +49,24 @@ public class FizzBuzzTests {
         assertThat(result).isEqualTo(expectedResult);
     }
 
+    @Test
+    void shouldReturnListOfPersons() {
+        // Arrange
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        Person person = new Person();
+        person.setId(1L);
+        person.setName("Martin");
+        
+        // Act        
+        fizzBuzz.add(person);
+
+        // Assert
+        var result = fizzBuzz.getPersons();
+        assertThat(result)
+                .hasSize(1)
+                .contains(person)
+                .extracting(t -> t.getId())
+                .isNotEqualTo(2L);
+                
+    }
 }
