@@ -36,7 +36,10 @@ public class FizzBuzzTests {
     @CsvSource({
             "4,4",
             "5,Buzz",
-            "6,Fizz"
+            "6,Fizz",
+            "15,FizzBuzz",
+            ",0",
+            "'',0"
     })
     void shouldReturnFizzBuzz(String value, String expectedResult) {
         String result = FizzBuzz.fizzBuzz(value);
