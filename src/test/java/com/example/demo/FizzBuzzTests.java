@@ -22,6 +22,14 @@ public class FizzBuzzTests {
         assertThat(result).isEqualTo("1");
     }
 
+    @Test
+    void givenValueThreeShouldReturnFizz(){
+        
+        String result = FizzBuzz.fizzBuzz("3");
+
+        assertThat(result).isEqualTo("Fizz");
+    }
+
 
 
 }
