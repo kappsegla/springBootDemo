@@ -40,6 +40,11 @@ public class OrganizationController {
         this.memberRepository = memberRepository;
     }
 
+    @GetMapping("/orgs")
+    public Iterable<Organization> getAllOrganizationNames(){
+        return orgrepo.findAll();        
+    }
+
     @GetMapping("/orgs/{id}")
     // @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Resource was not found
     // on the server")
@@ -82,13 +87,6 @@ public class OrganizationController {
         return ResponseEntity.created(location).body(myOrg);
     }
 
-    @GetMapping("/orgs")
-    public Iterable<Organization> getAllOrganizationNames(){
-        var auth = SecurityContextHolder.getContext().getAuthentication();
-        logger.info("Request by user: "  + auth.getName());
-
-        return orgrepo.findAll();
-    }
 
     // @GetMapping("/orgs")
     // @Transactional
