@@ -31,7 +31,6 @@ public class SecurityConfig {
                 .httpBasic().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.GET, "/orgs").hasAuthority("SCOPE_read:orgs")
-                .requestMatchers(HttpMethod.GET, "/orgs/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/playgrounds").hasAuthority("SCOPE_read")
                 .anyRequest().denyAll()
                 .and()

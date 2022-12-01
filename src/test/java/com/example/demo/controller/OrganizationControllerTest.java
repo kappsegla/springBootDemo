@@ -17,11 +17,10 @@ import com.example.demo.repository.MemberRepository;
 import com.example.demo.repository.OrganizationRepository;
 import com.example.demo.service.AgeService;
 
-import net.bytebuddy.asm.MemberRemoval;
-
 @ExtendWith(MockitoExtension.class)
 public class OrganizationControllerTest {
 
+    //This test tests our controller method as a java method, ignoring routing information and json serialization...
     @Mock
     OrganizationRepository orgrepo;
     @Mock
@@ -32,14 +31,12 @@ public class OrganizationControllerTest {
     @InjectMocks
     OrganizationController controller;
 
-
     @BeforeEach
-    void configureOrgRepo(){
+    void configureOrgRepo() {
         Organization org = new Organization();
         org.setName("Programming inc");
         Mockito.when(orgrepo.findAll()).thenReturn(List.of(org));
     }
-
 
     @Test
     void getAllOrganizationNamesShouldReturnOrganizations() {
@@ -47,5 +44,4 @@ public class OrganizationControllerTest {
 
         assertThat(result).hasSize(1);
     }
-
 }
