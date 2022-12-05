@@ -54,7 +54,7 @@ public class OrganizationControllerMVCTest {
         mockMvc.perform( get("/orgs"))
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
         .andExpect(jsonPath("$[0].name").value("Testorg"))
-        .andExpect(jsonPath("$[0].id").value("2"));
+        .andExpect(jsonPath("$[0].id").value("1"));
         
 
 
