@@ -30,6 +30,7 @@ public class SecurityConfig {
                 .sessionManagement().disable()
                 .httpBasic().disable()
                 .authorizeHttpRequests()
+                .requestMatchers(HttpMethod.GET,"/actuator/health").permitAll()
                 .requestMatchers(HttpMethod.GET, "/orgs").hasAuthority("SCOPE_read:orgs")
                 .requestMatchers(HttpMethod.GET, "/playgrounds").hasAuthority("SCOPE_read")
                 .anyRequest().denyAll()
