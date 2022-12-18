@@ -34,6 +34,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/orgs").hasAuthority("SCOPE_read:orgs")
                 .requestMatchers(HttpMethod.GET, "/playgrounds").hasAuthority("SCOPE_read")
                 .requestMatchers("/info").permitAll()
+                .requestMatchers("/error/**").permitAll()
                 .anyRequest().denyAll()
                 .and()
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)

@@ -1,18 +1,31 @@
 package com.example.demo.model;
 
+import com.example.demo.validators.IpAddress;
+
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 public class Info {
 
     Long Id;
-    @NotEmpty
+    //@NotEmpty(message = "Message can't be empty")
+    @Size(
+    min = 5,
+    max = 14,
+    message = "The message '${validatedValue}' must be between {min} and {max} characters long"
+    )
     String message;
     @Max(10)
-    @Min(1)
+    @Min(value = 1, message = "Invalid value '${validatedValue}' for counter")
     int counter;
 
+    @IpAddress
+    private String ipAddress;
+
+
+    
     public Long getId() {
         return Id;
     }
@@ -35,5 +48,13 @@ public class Info {
 
     public void setCounter(int counter) {
         this.counter = counter;
+    }
+
+    public String getIpAddress() {
+        return ipAddress;
+    }
+
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
     }
 }
