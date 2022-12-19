@@ -21,10 +21,8 @@ public class Info {
     @Min(value = 1, message = "Invalid value '${validatedValue}' for counter")
     int counter;
 
-    @IpAddress
+    @IpAddress(message = "Invalid ip address. Use format xxx.xxx.xxx.xxx where xxx are 0-255")
     private String ipAddress;
-
-
     
     public Long getId() {
         return Id;
